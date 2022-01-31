@@ -36,7 +36,7 @@ public class Task1 {
         }
         else if (number%2 != 0){
             resultMsg = "It's not an even number";
-            return resultMsg; // возможно сделать возврат строки
+            return resultMsg;
         }
         resultMsg = "Error. Enter the valid value. Only integer number allowed";
         return resultMsg;

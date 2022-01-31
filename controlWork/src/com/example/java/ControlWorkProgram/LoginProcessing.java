@@ -8,14 +8,15 @@ public class LoginProcessing {
     private String checkLogin;
     private String checkPassword;
     boolean resultValidation;
+    boolean loginValidation;
 
     public LoginProcessing (){
 
     }
 
     public LoginProcessing (String logPass) {
-
-        System.out.println("The password or login is required");
+        this.login = "iratest";
+        this.checkLogin = checkLogin;
     }
 
     public LoginProcessing (String checkLogin, String checkPassword){
@@ -27,6 +28,12 @@ public class LoginProcessing {
     public void setCheckLogin (String checkLogin){
         this.checkLogin = checkLogin;
     }
+    public void setLoginValidation (boolean loginValidation){
+        this.loginValidation = loginValidation;
+    }
+    public boolean getLoginValidation (){
+        return loginValidation;
+    }
 
     public void setCheckPassword(String checkPassword){
         this.checkPassword = checkPassword;
@@ -37,21 +44,24 @@ public class LoginProcessing {
     public boolean getResultValidation(){
         return resultValidation;
     }
+    public boolean LoginValidation (String checkLogin) {
+        if (login.equalsIgnoreCase(checkLogin)) {
+            return loginValidation = true;
+        } else if (!login.equalsIgnoreCase(checkLogin)) {
+            return loginValidation = false;
+        } else {
+            return loginValidation = false;
+        }
+    }
     public boolean LoginValidation (String checkLogin, String checkPassword) {
         if ( login.equalsIgnoreCase(checkLogin) && password.equals(checkPassword)){
             return resultValidation = true;
-//            System.out.println("Tasks menu:");
-//            System.out.println();
-//            TaskMenu tasks = new TaskMenu();
-//            tasks.TasksMenu(resultValidation);
         }
         else if (!login.equalsIgnoreCase(checkLogin) || !password.equals(checkPassword)){
             return resultValidation = false;
-//            System.out.println("Wrong login or password");
         }
         else {
             return resultValidation = false;
-//            System.out.println("Something wrong. Try Again to enter correct login and password");
         }
 
     }
