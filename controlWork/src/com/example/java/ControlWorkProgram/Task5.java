@@ -5,6 +5,8 @@ package com.example.java.ControlWorkProgram;
 Строка может состоять из нескольких слов и любых символов)
  */
 
+import java.util.Scanner;
+
 public class Task5 {
 
     private String str;
@@ -22,7 +24,24 @@ public class Task5 {
         return newStr;
     }
 
+    public void beforeReplace(String str) throws ReflectiveOperationException{
+        try{
+            if (str.length()<=30) {
+                System.out.println("Your reverse string: \n" + replaceStr(str));
+            }
+            else {
+                throw new ReflectiveOperationException("Max length 30 symbols!");
+
+            }
+        }catch (ReflectiveOperationException exception){
+            System.out.println("Max length of String can be 30 symbols!");
+        }
+
+
+    }
+
     public String replaceStr(String str) {
+
         newStr = str.replace("a", "@").replace("A", "@").replace("а", "@").replace("А", "@"); // для текстов en и ru кодировки
         newStr = newStr.replace("o", "0").replace("O", "0").replace("о","0").replace("О", "0"); // для текстов en и ru кодировки
         return newStr;
