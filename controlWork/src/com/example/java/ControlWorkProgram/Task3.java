@@ -23,7 +23,7 @@ public class Task3 {
     public String getUserString(){
        return userString;
     }
-    public void setNewUserString (String userString){
+    public void setNewUserString (String userString) throws ReflectiveOperationException {
        this.newUserString = newUserString(getUserString());
     }
 
@@ -31,17 +31,26 @@ public class Task3 {
        return newUserString;
     }
 
-    public String newUserString (String userString){
-        String newUserString ="";
-                String [] str = new String[userString.length()];
-        int j = 1;
-        for (int i = 0; i<str.length; i++){
-            str[i] = Character.toString(userString.charAt(userString.length()-j));
-            newUserString = newUserString.concat(str[i]);
-            j++;
-        }
-        return newUserString;
-
+    public String newUserString (String userString) throws ReflectiveOperationException{
+       try{
+           if (userString.length()>=5){
+               throw new ReflectiveOperationException("Long string received");
+           }
+           String newUserString ="";
+           String [] str = new String[userString.length()];
+           int j = 1;
+           for (int i = 0; i<str.length; i++){
+               str[i] = Character.toString(userString.charAt(userString.length()-j));
+               newUserString = newUserString.concat(str[i]);
+               j++;
+           }
+           System.out.println("Your new string here:");
+           return newUserString;
+       }catch (ReflectiveOperationException exception){
+           System.out.println("Max lengths of string 5 symbols");
+           exception.printStackTrace();
+       }
+       return "";
     }
 }
 

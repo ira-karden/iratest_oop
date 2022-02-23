@@ -1,5 +1,6 @@
 package com.example.java.ControlWorkProgram;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*
@@ -29,17 +30,17 @@ public class Task1 {
     public String getResultMsg(){
         return resultMsg;
     }
-    public String CheckNumber (int number){
-        if(number%2==0){
-            resultMsg = "It's an even number";
+    public String CheckNumber (int number) throws InputMismatchException {
+            if(number%2==0){
+                resultMsg = "It's an even number";
+                return resultMsg;
+            }
+            else if (number%2 != 0){
+                resultMsg = "It's not an even number";
+                return resultMsg;
+            }
+            resultMsg = "Error. Enter the valid value. Only integer number allowed";
             return resultMsg;
-        }
-        else if (number%2 != 0){
-            resultMsg = "It's not an even number";
-            return resultMsg;
-        }
-        resultMsg = "Error. Enter the valid value. Only integer number allowed";
-        return resultMsg;
     }
 
 }

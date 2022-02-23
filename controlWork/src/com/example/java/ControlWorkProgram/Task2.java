@@ -8,6 +8,7 @@ package com.example.java.ControlWorkProgram;
 
 import java.util.Arrays;
 import java.lang.Math;
+import java.util.Scanner;
 
 public class Task2 {
 
@@ -25,39 +26,60 @@ public class Task2 {
     public void setUserNum (int userNum){
         this.userNum = userNum;
     }
-    public void setSum(int userNum){
+    public void setSum(int userNum) throws ReflectiveOperationException {
         this.sum = sumCounting(userNum);
     }
     public int getSum (){
         return sum;
     }
-    public void setResultMsg(int sum){
+    public void setResultMsg(int sum) throws ReflectiveOperationException {
         this.resultMsg = checkingArmstrong(sum);
     }
-    public String getResultMsg(){
-        return resultMsg;
+    public String getResultMsg() throws NullPointerException{
+        try{
+            if (resultMsg == null) {
+                throw new NullPointerException("Received Value incorrect");
+            }
+            else {
+                return resultMsg;
+            }
+        }catch (NullPointerException exception){
+            System.out.println("Cannot get result. Enter Correct value");
+            exception.printStackTrace();
+        }
+        return "";
     }
-    public int sumCounting (int userNum){
-        int power = String.valueOf(userNum).length();
-        String number = String.valueOf(userNum);
-        int[] n = new int[number.length()];
-        for (int i =0; i < number.length(); i++){
-            n[i] = Integer.parseInt(number.substring(i,i+1));
-        }
+    public int sumCounting (int userNum) {
 
-        for (int i =0; i < n.length; i++){
-            sum = sum + (int)Math.pow (n[i], power);
-        }
+            int power = String.valueOf(userNum).length();
+            String number = String.valueOf(userNum);
+            int[] n = new int[number.length()];
+            for (int i =0; i < number.length(); i++){
+                n[i] = Integer.parseInt(number.substring(i,i+1));
+            }
+
+            for (int i =0; i < n.length; i++){
+                sum = sum + (int)Math.pow (n[i], power);
+            }
         return sum;
     }
-     public String checkingArmstrong (int userNum){
-        sum = sumCounting(userNum);
-        if(userNum == sum){
-            resultMsg = "Yeees, its Armstrong number";
+     public String checkingArmstrong (int userNum) throws IllegalArgumentException  {
+
+        try {
+            if (userNum<=0){
+                throw new IllegalArgumentException ("Value cannot be negative");
+            }
+            sum = sumCounting(userNum);
+            if(userNum == sum){
+                resultMsg = "Yeees, its Armstrong number";
+            }
+            else {
+                resultMsg = "Nooo, its not Armstrong number";
+            }
+        }catch (IllegalArgumentException  exception){
+            System.out.println("Error! Please enter a value greater than zero.");
         }
-        else {
-            resultMsg = "Nooo, its not Armstrong number";
-        }
+
          return resultMsg;
      }
 
